@@ -2,7 +2,7 @@
 /*
 Plugin Name: Sensible content output
 Description: Make the_content() output a little more sane with these features. All features are optional and disabling them is easy.
-Version: 0.1
+Version: 0.1.1
 Author: Christian Nikkanen
 Licence: GPL2
 */
@@ -10,9 +10,13 @@ Licence: GPL2
 namespace k1sul1;
 
 $defaults = array("unwrap_inline_images", "remove_inline_width");
-$options = array();
+$options = array(
+  "enabled_features" => array(
+    // Placeholder for admin page.
+  )
+);
 
-$enabled_features = !empty($options) ? $options["enabled_features"] : $defaults;
+$enabled_features = !empty($options["enabled_features"]) ? $options["enabled_features"] : $defaults;
 apply_filters("sco_enabled_features", $enabled_features);
 
 function unwrap_inline_images($content){
