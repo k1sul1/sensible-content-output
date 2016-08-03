@@ -2,27 +2,29 @@
 /*
 Plugin Name: Sensible content output
 Description: Make the_content() output a little more sane with these features. All features are optional and disabling them is easy.
-Version: 0.1.2
+Version: 0.1.3
 Author: Christian Nikkanen
 Licence: GPL2
 */
 
 namespace k1sul1;
 
-$defaults = array("unwrap_inline_images", "remove_inline_width");
+add_action("after_setup_theme", function(){
+  $defaults = array("unwrap_inline_images", "remove_inline_width");
 
-$options = array(
-  "enabled_features" => array(
-    // Placeholder for admin page.
-  )
-);
+  $options = array(
+    "enabled_features" => array(
+      // Placeholder for admin page.
+    )
+  );
 
-$enabled_features = !empty($options["enabled_features"]) ? $options["enabled_features"] : $defaults;
-$enabled_features = apply_filters("sco_enabled_features", $enabled_features);
+  $enabled_features = !empty($options["enabled_features"]) ? $options["enabled_features"] : $defaults;
+  $enabled_features = apply_filters("sco_enabled_features", $enabled_features);
 
-foreach($enabled_features as $feature){
-  add_filter("the_content", "\k1sul1\\$feature", 999999);
-}
+  foreach($enabled_features as $feature){
+    add_filter("the_content", "\k1sul1\\$feature", 999999);
+  }
+});
 
 function unwrap_inline_images($content){
   return preg_replace('/<p>\\s*?(<a .*?><img.*?><\\/a>|<img.*?>)?\\s*<\\/p>/s', '\1', $content);
