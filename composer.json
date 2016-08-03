@@ -1,0 +1,14 @@
+{
+    "name": "k1sul1/sensible-content-output",
+    "description": "Make the_content() output a little more sane with these features. All features are optional and disabling them is easy.",
+    "type": "wordpress-plugin",
+    "license": "GPL2",
+    "authors": [
+        {
+            "name": "Christian Nikkanen",
+            "email": "christian.nikkanen@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
