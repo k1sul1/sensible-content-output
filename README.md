@@ -2,6 +2,8 @@
 
 This plugin helps to keep your sanity when working with WordPress. At the moment it unwraps your inline images and removes the inline width declaration from figure elements embedded within content, to make your life easier.
 
+[![Build Status](https://travis-ci.org/k1sul1/sensible-content-output.svg?branch=master)](https://travis-ci.org/k1sul1/sensible-content-output)
+
 Installing
 ---
 Easiest way to install is with composer:
