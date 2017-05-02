@@ -9,7 +9,7 @@ Licence: GPL2
 
 namespace k1sul1;
 
-add_action("after_setup_theme", function(){
+add_action("after_setup_theme", function() {
   $defaults = array("unwrap_inline_images", "remove_inline_width");
 
   $options = array(
@@ -21,22 +21,22 @@ add_action("after_setup_theme", function(){
   $enabled_features = !empty($options["enabled_features"]) ? $options["enabled_features"] : $defaults;
   $enabled_features = apply_filters("sco_enabled_features", $enabled_features);
 
-  foreach($enabled_features as $feature){
+  foreach ($enabled_features as $feature) {
     add_filter("the_content", "\k1sul1\\$feature", 999999);
   }
 });
 
-function unwrap_inline_images($content){
+function unwrap_inline_images($content) {
   return preg_replace('/<p>\\s*?(<a .*?><img.*?><\\/a>|<img.*?>)?\\s*<\\/p>/s', '\1', $content);
 }
 
-function remove_inline_width($content){
+function remove_inline_width($content) {
   // for example, figure element gets inline width for some reason by WP.
   // Help welcome!
 
   preg_match('/<[^>]*style=.(width:.\d{0,}.{0,}?[^"\']*)/', $content, $matches); // this could be probably done with preg_replace
 
-  for($i = 1; $i < count($matches); $i++){
+  for($i = 1; $i < count($matches); $i++) {
     $content = str_replace($matches[$i], "", $content);
   }
 
