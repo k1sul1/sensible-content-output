@@ -2,7 +2,7 @@
 /*
 Plugin Name: Sensible content output
 Description: Make the_content() output a little more sane with these features. All features are optional and disabling them is easy.
-Version: 0.1.3
+Version: 0.2
 Author: Christian Nikkanen
 Licence: GPL2
 */
@@ -10,7 +10,7 @@ Licence: GPL2
 namespace k1sul1;
 
 add_action("after_setup_theme", function() {
-  $defaults = array("unwrap_inline_images", "remove_inline_width");
+  $defaults = array("unwrap_inline_images", "remove_inline_width", "strip_empty_paragraphs");
 
   $options = array(
     "enabled_features" => array(
@@ -43,4 +43,8 @@ function remove_inline_width($content) {
   return $content;
 }
 
+function strip_empty_paragraphs($content) (
+  return str_replace('<p>&nbsp;</p>', '', $content);
+}
+  
 // TODO: Maybe add admin page to select features?
