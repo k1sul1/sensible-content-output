@@ -43,7 +43,7 @@ function remove_inline_width($content) {
   return $content;
 }
 
-function strip_empty_paragraphs($content) (
+function strip_empty_paragraphs($content) {
   return str_replace('<p>&nbsp;</p>', '', $content);
 }
   
